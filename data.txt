@@ -1,0 +1,8 @@
+SENDER:example@gmail.com
+RECEIVER:test@gmail.com
+SUBJECT:The subject goes here
+ATTACHMENT:ABC.docx
+BODY:
+Hello World
+HI World
+BYE WORLD!
