@@ -1,5 +1,6 @@
+#!/usr/bin/python
 # 
-#  GMail SMTP Script
+#  Gmail SMTP Script
 #  (c) Afaan Bilal ( https://afaan.ml ) 
 #
 
@@ -47,21 +48,21 @@ def send_mail(user, pwd, send_to, subject, text, files=None):
         print('Failed to send the email')
 # [END] Send mail -------------------------------------------------------|
 
-print("GMail SMTP SendMail")
+print("Gmail SMTP SendMail")
 print("(c) Afaan Bilal ( https://afaan.ml )\n")
 
 accounts_file = 'accounts.txt'
 data_file     = 'data.txt'
 
 if not os.path.isfile(accounts_file):
-    print("Error: The accounts.txt file (database) does not exist")
+    print("Fatal Error: The accounts.txt file (database) does not exist")
     input("Press any key to exit...")
     sys.exit() 
 
-data_file = input('Data filename: ')
+data_file = input("Data filename: ")
 
 if not os.path.isfile(data_file):
-    print('Error: The file: ' + data_file + ' (data file) does not exist')
+    print('Fatal Error: The file: ' + data_file + ' (data file) does not exist')
     input("Press any key to exit...")
     sys.exit() 
 
@@ -91,6 +92,10 @@ for line in open(data_file):
     elif ldata[0] == "ATTACHMENT":
         attachment = ldata[1].rstrip('\n')
     
+if attachment != '' and not os.path.isfile(attachment):
+    print('Fatal Error: The attachment file: ' + attachment + ' does not exist')
+    input("Press any key to exit...")
+    sys.exit() 
 
 print("FROM      : " + email_addr)
 print("TO        : " + email_to)
@@ -105,7 +110,7 @@ for line in open(accounts_file):
         email_pass = data[1]
 
 if email_pass == "":
-    print("Error: no such sender email in the database")
+    print("Fatal Error: no such sender email in the database")
     input("Press any key to exit...")
     sys.exit()
 
