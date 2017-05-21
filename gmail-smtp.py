@@ -12,6 +12,12 @@ from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.utils import COMMASPACE, formatdate
+from __future__ import print_function
+
+try:
+   input = raw_input
+except NameError:
+   pass
 
 # [START] Send mail -----------------------------------------------------|
 def send_mail(user, pwd, send_to, subject, text, files=None):
